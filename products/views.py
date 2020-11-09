@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from products.models import Product, Category
-
+from carts.forms import CartAddProductForm
+from carts.carts import Cart
+from utils.constants import KEY_OVERRIDE, KEY_QUANTITY
 # Create your views here.
 
 
@@ -21,6 +23,14 @@ def product_list(request, category_slug=None):
 
 def product_details(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    cart = Cart(request)
+    current_product = cart.get_product(product)
+    if current_product:
+        cart_product_form = CartAddProductForm(initial={
+            KEY_QUANTITY: current_product[KEY_QUANTITY], KEY_OVERRIDE: True
+        })
+    else:
+        cart_product_form = CartAddProductForm()
     return render(request, 'eShop/products/product_details.html', {
-        'product': product
+        'product': product, 'cart_product_form': cart_product_form
     })
