@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
@@ -128,3 +128,9 @@ MEDIA_ROOT = os_path.join(str(BASE_DIR) + 'media/')
 
 ALLOWED_HOSTS = ['mysite.example.net', 'localhost', '127.0.0.1']
 CART_SESSION_ID = 'eCarts'
+
+
+try:
+    from eShop.local_settings import *
+except ImportError:
+    pass
