@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'carts.apps.CartsConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
     'products.apps.ProductsConfig',
 ]
 
@@ -124,7 +125,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os_path.join(str(BASE_DIR) + 'media/')
+STATIC_ROOT = os_path.join(str(BASE_DIR), 'static/')
+MEDIA_ROOT = os_path.join(str(BASE_DIR), 'media/')
 
 ALLOWED_HOSTS = ['mysite.example.net', 'localhost', '127.0.0.1']
 CART_SESSION_ID = 'eCarts'
