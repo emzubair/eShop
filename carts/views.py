@@ -7,6 +7,8 @@ from coupons.forms import CouponApplyForm
 from utils.constants import KEY_QUANTITY, KEY_OVERRIDE
 from django.utils.translation import gettext as _
 
+from products.recommender import Recommender
+
 # Create your views here.
 
 
@@ -33,11 +35,17 @@ def cart_remove(request, product_id):
 
 def cart_details(request):
     cart = Cart(request)
+    r = Recommender()
+    cart_products = []
     for item in cart:
+        cart_products.append(item['product'])
         item['cart_upgrade_form'] = CartAddProductForm(initial={
             KEY_QUANTITY: item[KEY_QUANTITY], KEY_OVERRIDE: True
         })
+
+    recommended_products = r.suggest_products_for(cart_products, 4)
     coupon_apply_form = CouponApplyForm()
     return render(request, 'carts/detail.html', {'cart': cart,
-                                                 'coupon_apply_form': coupon_apply_form})
+                                                 'coupon_apply_form': coupon_apply_form,
+                                                 'recommended_products': recommended_products})
 

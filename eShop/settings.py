@@ -34,6 +34,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 INSTALLED_APPS = [
     # The following apps are required:
     'rosetta',
+    'parler',
+    'localflavor',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -132,6 +134,17 @@ LANGUAGES = (
 LOCALE_PATHS = (
     os_path.join(BASE_DIR, 'locale/'),
 )
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'}
+    ),
+    "default": {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
 
 TIME_ZONE = 'UTC'
 
