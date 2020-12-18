@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-08 23:50+0500\n"
+"POT-Creation-Date: 2020-12-18 12:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: eShop/settings.py:132
+#: eShop/settings.py:128
 msgid "English"
 msgstr "English"
 
-#: eShop/settings.py:133
+#: eShop/settings.py:129
 msgid "Spanish"
 msgstr "Spanish"
+
+#: eShop/urls.py:29
+msgid "carts/"
+msgstr ""
 
 #: products/templates/eShop/base.html:7 products/templates/eShop/base.html:12
 msgid "eShop"
